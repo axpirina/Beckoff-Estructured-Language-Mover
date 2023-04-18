@@ -1,0 +1,133 @@
+PROGRAM MAIN
+
+VAR
+    fbMover           : ARRAY [1..nMaxMoveral or FB_XPlanarMoverStandard;
+    Target Posl       : PositionXYC;
+    Target Pos2       : PositionXYC;
+    stMoveCOptions    :ST_MoveCOptions;
+
+    bEnable
+    bDisable
+bReset
+bMarcha
+nState
+Tinerl
+NumerosecuenciaActual
+NumeroSecuencia
+END VAR
+VAR CONSTANT
+nMaxMovers
+END VAR
+IF BEnable THEN
+fbMover [1]. Enable('');
+bEnable : FALSE;
+END IF
+IF bDisable THEN
+fbMover [11.Disable (
+bDisable := FALSE;
+END IF
+IF DRARAT THEN
+5:
+fbMover [1]. Reset ('');
+bReset : FALSE;
+END IF
+CASE nstate OF
+: UINT := 1;
+0: //Inicializamos parametros
+nstate : 10;
+ELSE
+bDisable := TRUE;
+bMarcha : FALSE;
+nState
+0;
+ST MoveCOptions;
+Target Posl.SetValuesXYC (120, 600, 0);
+TargetPou2.SetValuesXYC (120, 120, 0);
+stMoveCoptions.additionalTurns := 10;
+END IF
+10: //Habilitar mover
+: BOOL;
+: BOOL:
+: BOOL;
+: DOOL;
+at MoveCOptions.direction := MC_DIRECTION.mcDirection Positive;
+IF bMarcha THEN
+nstate: 5;
+: INT;
+: TON;
+: UINT;
+: UINT : 4:
+END IF
+//Repetir secuencia
+IF NumerosecuenciaActual <- NumeroSecuencia THEN
+fbMover [1]. Enable ('Solicitud de habilitacion');
+nState: 20;
+20: //Copmprobar si mover habilitado
+IF fbMover [1] .P_Enable. Done THEN
+nState :- 30;
+END IF
+30: //Mover hasta posicion x=120 y=600
+fbMover [1].MoveToPosition ('Mover hasta 2031', Target Posl, 500, 5000, 5000, 50000
+};
+nState: 40;
+40: //Comprobar si ha finalizado el primer movimiento
+IF fbMover [1].P_MoveToPosition. Done THEN
+nState = 50;
+END IF
+50: //Mover en C
+fbMover [1].MoveC('Mover en C,0,1080, 10000, 10000, 30000, stMoveCoptions);
+nState: 60;
+60: //Comporbar si ha finalizado al movimiento
+IF fbMover [1].P_Movec. Done THEN
+nState : 70;
+END IF
+70: //Volver a pos inicial x- 120 y-120
+fbMover [1].MoveToPosition ('Mover hasta POS inicial', Target Pos2, 500, 5000, 5000
+, 500000);
+inState:
+80;
+80: //Comporbar si ha finalizado el movimiento
+IF fbMover [1]).P_MoveToPosition. Done THEN
+nState = 90;
+END IF
+90: //Mover en 2
+fbMover [1].Movez ('Mover en z', 4, 10, 100, 100, 1000);
+nState :- 100;
+100: //Comprobar si ha finalizado el movimiento
+110:
+IF fbMover [1].P_Movez. Done THEN
+nState: 110;
+END IF
+/Mover en B
+fbMover [1].MoveB('Mover en B', 3, 10, 100, 100, 1000);
+nState = 120;
+120: //Comprobar si ha finalizado el movimiento
+IF fbMover [1].P_MoveB. Done THEN
+nState: 130;
+END IF
+130: //Mover en B
+fbMover [1].MoveB ('Mover en B', -3, 10, 100, 100, 1000);
+nState: 140;
+140: //Comprobar si ha finalizado el movimiento
+IF fbMover [1]. P_MoveB. Done THEN
+nState: 150;
+END IF
+150: //Mover en B
+fbMover [1]. MoveB ('Mover en B¹, 0,10, 100, 100, 1000);
+nState: 160;
+160: //Comprobar si ha finalizado el movimiento
+IF fbMover [1].P_MoveB. Done THEN
+nState: 170;
+END IF
+170: //volver a posicion normal estandar de 2
+fbMover [1] .Movez ('Mover en 2', 2, 10, 100, 100, 1000);
+nState: 180;
+180: //Comprobar si ha finalizado el movimiento
+IF fbMover [1].P_Movez. Done THEN
+nState: 190;
+END IF
+190: //Aumentar secuencia
+NumeroSecuenciaActual : NumeroSecuenciaActual +1;
+nState = 0;
+END CASE
+fbMover [1]. Cycle();
